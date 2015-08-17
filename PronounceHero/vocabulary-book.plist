@@ -4,11 +4,11 @@
 <array>
 	<dict>
 		<key>Null</key>
-		<string>null.mp3</string>
+		<string>null</string>
 	</dict>
 	<dict>
 		<key>Access</key>
-		<string>access.mp3</string>
+		<string>access</string>
 	</dict>
 </array>
 </plist>

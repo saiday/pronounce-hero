@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04694E5B7B0E29840084160E /* Pods_PronounceHero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E07DB9629D659AB41736D9E /* Pods_PronounceHero.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		83E3D5291B7F4A3A0098F40C /* Vocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3D5281B7F4A3A0098F40C /* Vocabulary.swift */; };
 		83E5D53C1B7DDC4800E91084 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E5D53B1B7DDC4800E91084 /* AppDelegate.swift */; };
 		83E5D53E1B7DDC4800E91084 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E5D53D1B7DDC4800E91084 /* ViewController.swift */; };
 		83E5D5411B7DDC4800E91084 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83E5D53F1B7DDC4800E91084 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		5DC2E95E6BEB9818B03D7CC6 /* Pods-PronounceHero.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PronounceHero.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PronounceHero/Pods-PronounceHero.debug.xcconfig"; sourceTree = "<group>"; };
 		6E07DB9629D659AB41736D9E /* Pods_PronounceHero.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PronounceHero.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83E3D5281B7F4A3A0098F40C /* Vocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vocabulary.swift; sourceTree = "<group>"; };
 		83E5D5381B7DDC4800E91084 /* PronounceHero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PronounceHero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83E5D53B1B7DDC4800E91084 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83E5D53D1B7DDC4800E91084 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83E3D5271B7F4A0F0098F40C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				83E3D5281B7F4A3A0098F40C /* Vocabulary.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		83E5D52F1B7DDC4700E91084 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +120,7 @@
 		83E5D53A1B7DDC4800E91084 /* PronounceHero */ = {
 			isa = PBXGroup;
 			children = (
+				83E3D5271B7F4A0F0098F40C /* Entities */,
 				83E5D53B1B7DDC4800E91084 /* AppDelegate.swift */,
 				83E5D53D1B7DDC4800E91084 /* ViewController.swift */,
 				83E5D53F1B7DDC4800E91084 /* Main.storyboard */,
@@ -239,11 +250,17 @@
 		83E5D5301B7DDC4700E91084 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Stan;
 				TargetAttributes = {
 					83E5D5371B7DDC4800E91084 = {
 						CreatedOnToolsVersion = 7.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					83E5D54B1B7DDC4800E91084 = {
 						CreatedOnToolsVersion = 7.0;
@@ -360,6 +377,7 @@
 			files = (
 				83E5D53E1B7DDC4800E91084 /* ViewController.swift in Sources */,
 				83E5D53C1B7DDC4800E91084 /* AppDelegate.swift in Sources */,
+				83E3D5291B7F4A3A0098F40C /* Vocabulary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

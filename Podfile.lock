@@ -1,10 +1,13 @@
 PODS:
+  - HysteriaPlayer (2.1.2)
   - PureLayout (2.0.6)
 
 DEPENDENCIES:
+  - HysteriaPlayer (~> 2.1.2)
   - PureLayout (~> 2.0.6)
 
 SPEC CHECKSUMS:
+  HysteriaPlayer: 638e16d27386da1dede8c069d09289497c870b30
   PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
 
-COCOAPODS: 0.37.0
+COCOAPODS: 0.36.0

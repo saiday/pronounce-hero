@@ -9,14 +9,16 @@
 import UIKit
 
 import PureLayout
+import HysteriaPlayer
 
 struct Constants {
     static let kCellIdentifier: String  = "kCellIdentifier"
 }
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HysteriaPlayerDelegate, HysteriaPlayerDataSource {
     weak var tableView: UITableView?
-    lazy var items = [(key: String, path: String)]()
+    lazy var items = [Vocabulary]()
+    lazy var hysteriaPlayer = HysteriaPlayer.sharedInstance()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         setupSubviews()
         initCustomViews()
         prepareDatasets()
+        initHysteriaPlayer()
     }
 
     func setupSubviews() {
@@ -44,17 +47,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let array = NSArray(contentsOfFile: path) {
                 for pair in array as! [NSDictionary] {
                     for (key, value) in pair {
-                        items.append((key as! String, value as! String))
+                        items.append(Vocabulary(name: key as! String, filePath: value as! String))
                     }
                 }
             }
         }
-        print(items[0].key)
     }
+    
+    // MARK: - UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: Constants.kCellIdentifier)
-        cell.textLabel?.text = items[indexPath.row].key
+        cell.textLabel?.text = items[indexPath.row].name
         return cell
     }
     
@@ -65,5 +69,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        hysteriaPlayer.fetchAndPlayPlayerItem(indexPath.row)
+    }
+    
+    // MARK: - HysteriaPlayer
+    
+    func initHysteriaPlayer() {
+        hysteriaPlayer.delegate = self
+        hysteriaPlayer.datasource = self
+        hysteriaPlayer.enableMemoryCached(false)
+    }
+    
+    func hysteriaPlayerNumberOfItems() -> Int {
+        return items.count
+    }
+    
+    func hysteriaPlayerURLForItemAtIndex(index: Int, preBuffer: Bool) -> NSURL! {
+        if let path = NSBundle.mainBundle().pathForResource(items[index].filePath, ofType: "mp3") {
+            return NSURL(fileURLWithPath: path)
+        }
+        
+        return NSURL()
+    }
+    
+    func hysteriaPlayerReadyToPlay(identifier: HysteriaPlayerReadyToPlay) {
+        hysteriaPlayer.play()
+    }
+    
 }
 
